@@ -36,7 +36,7 @@ void bloom_filter::update_Array(unsigned long position){        //Update the blo
 //------Public-------
 
 bool bloom_filter::bloom_filter_search(std::string str){
-    for(int i=0; i<K_HASH; i++){
+    for(int i=1; i<=K_HASH; i++){
 		unsigned long hash = hash_i(str,i)%(this->bloom_size*8); //Trim hash to fit the bloom size.
 
         if(!look_Array(hash)){
@@ -48,7 +48,7 @@ bool bloom_filter::bloom_filter_search(std::string str){
 }
 
 void bloom_filter::bloom_filter_insert(std::string str){
-    for(int i=0; i<K_HASH; i++){
+    for(int i=1; i<=K_HASH; i++){
         unsigned long hash = hash_i(str,i)%((this->bloom_size)*8);
 
         update_Array(hash);
